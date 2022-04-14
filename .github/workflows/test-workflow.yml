@@ -7,3 +7,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo "Hello World!"
+
+  resuable:
+    uses: steveo-grainger/test-reusable/.github/workflows/test-reusable.yml@main
+    with:
+      test-input: "overriding the input"
+  
