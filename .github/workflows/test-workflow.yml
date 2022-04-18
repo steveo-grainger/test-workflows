@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       fail:
-        type: string
+        type: choice
         default: no
         description: "Which job should fail?"
         required: true
