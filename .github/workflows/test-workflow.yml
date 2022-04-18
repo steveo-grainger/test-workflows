@@ -5,11 +5,11 @@ on:
     inputs:
       fail:
         type: choice
-        default: 'no'
+        default: 'ignore'
         description: "Which job should fail?"
         required: true
         options:
-          - no
+          - ignore
           - first
           - second
   push:
@@ -29,7 +29,7 @@ jobs:
 
       - run: echo ${{ github.events.inputs.fail == 'first' }}
       - run:  echo ${{ github.events.inputs.fail }}
-        
+
       - name: Fail the job
         if: ${{ github.events.inputs.fail == 'first' }}
         run: exit 1
