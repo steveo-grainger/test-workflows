@@ -5,7 +5,7 @@ on:
     inputs:
       fail:
         type: choice
-        default: no
+        default: 'no'
         description: "Which job should fail?"
         required: true
         options:
@@ -27,6 +27,9 @@ jobs:
         with:
           node-version: '14'
 
+      - run: echo ${{ github.events.inputs.fail == 'first' }}
+      - run:  echo ${{ github.events.inputs.fail }}
+        
       - name: Fail the job
         if: ${{ github.events.inputs.fail == 'first' }}
         run: exit 1
