@@ -9,7 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo "Hello World!"
+        name: bash script
+        shell: bash
+
       - uses: actions/setup-node@v3
+        name: Set up Node environment
         with:
           node-version: '14'
 
