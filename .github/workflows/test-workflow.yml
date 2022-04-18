@@ -2,6 +2,16 @@ name: Test Workflow
 
 on:
   workflow_dispatch:
+    inputs:
+      fail:
+        type: string
+        default: no
+        description: "Which job should fail?"
+        required: true
+        options:
+          - no
+          - first
+          - second
   push:
 jobs:
   hello-world:
@@ -17,8 +27,12 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Fail the job
+        if: ${{ inputs.fail == 'first' }}
+        run: exit 1
+
   resuable:
     uses: steveo-grainger/test-reusable/.github/workflows/reusable-workflow.yml@main
     with:
       test-input: "overriding the input"
-
+      fail: ${{ inputs.fail }}
