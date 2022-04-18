@@ -27,15 +27,15 @@ jobs:
         with:
           node-version: '14'
 
-      - run: echo ${{ github.events.inputs.fail == 'first' }}
-      - run:  echo ${{ github.events.inputs.fail }}
+      - run: echo ${{ github.event.inputs.fail == 'first' }}
+      - run:  echo ${{ github.event.inputs.fail }}
 
       - name: Fail the job
-        if: ${{ github.events.inputs.fail == 'first' }}
+        if: ${{ github.event.inputs.fail == 'first' }}
         run: exit 1
 
   resuable:
     uses: steveo-grainger/test-reusable/.github/workflows/reusable-workflow.yml@main
     with:
       test-input: "overriding the input"
-      fail: ${{ github.events.inputs.fail }}
+      fail: ${{ github.event.inputs.fail }}
