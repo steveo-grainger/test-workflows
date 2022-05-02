@@ -1,8 +1,6 @@
 name: hello workflow
 on:
   push:
-    tags:
-      - v*
 jobs:
   hello:
     name: hello job
