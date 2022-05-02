@@ -13,3 +13,5 @@ jobs:
         with:
           script: |
             console.log(JSON.stringify(context, undefined, 2))
+            
+      - run: echo ${{event.workflow_run.head_branch}}
